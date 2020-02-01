@@ -25,7 +25,7 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
 
 
 ## TP 4 : Systèmes d'enchères
-#### _Thème : encapsulation, cycle de vie d'une application orientée objets_
+#### _Thème : encapsulation, cycle de vie d'une application orientée objet_
 
 Comme d'habitude, cliquez sur le lien ci-dessous pour faire votre fork privé du TP :
 
@@ -102,8 +102,6 @@ pas arrêtée, etc) et l'ajoute à la liste d'offres d'enchères de la classe `P
 
     **Sans modifier les autres classes**, pensez à mettre à jour correctement les valeurs de prix des différentes entités de votre application.
 
-12. Ajoutez à la classe `Produit` une méthode `calculerGagnant()` qui renvoie la meilleure offre d'enchère.
-
 12. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez des produits
 (2 au minimum) et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
 (non-informaticien donc) de déposer des enchères pour différents produits en affichant les informations sur le produit
@@ -135,6 +133,3 @@ Voici un petit exemple de ce que vous pouvez faire avec :
     }
     ```
 Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
-
-
-13. **Bonus** : contactez votre site d'enchères favoris pour lui vendre votre solution.
