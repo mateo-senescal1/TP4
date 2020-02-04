@@ -21,7 +21,8 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
-- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lif.univ-mrs.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
+- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
+- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 16 février à 23h00**
 
 
 ## TP 4 : Systèmes d'enchères
@@ -29,7 +30,7 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
 
 Comme d'habitude, cliquez sur le lien ci-dessous pour faire votre fork privé du TP :
 
-https://classroom.github.com/a/gvU7MDoR
+LIEN CLASSROOM A CREER
 
 
 Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système,
@@ -105,8 +106,8 @@ pas arrêtée, etc) et l'ajoute à la liste d'offres d'enchères de la classe `P
 12. Ajoutez à la classe `Produit` une méthode `getGagnant()` qui renvoie la meilleure offre d'enchère.
 
 13. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
-(non-informaticien donc) de déposer des enchères pour le produit en affichant les informations sur le produit
-et l'offre gagnante en cours. Pensez à testez que les offres d'enchère non-valides ne puissent pas être déposées à un produit. Vous pouvez effectuer cette simulation par des simples
+(non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit
+et l'offre gagnante en cours. Pensez à **tester** que les offres d'enchère non-valides ne puissent pas être déposées. Vous pouvez effectuer cette simulation par des simples
 affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
 classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères.
 Voici un petit exemple de ce que vous pouvez faire avec :
