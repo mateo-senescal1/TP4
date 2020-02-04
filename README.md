@@ -104,10 +104,9 @@ pas arrêtée, etc) et l'ajoute à la liste d'offres d'enchères de la classe `P
 
 12. Ajoutez à la classe `Produit` une méthode `getGagnant()` qui renvoie la meilleure offre d'enchère.
 
-13. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez des produits
-(2 au minimum) et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
-(non-informaticien donc) de déposer des enchères pour différents produits en affichant les informations sur le produit
-et l'offre gagnante en cours. Pensez à testez que les offres d'enchère non-valides ne puissent pas être déposées à un `Produit`. Vous pouvez effectuer cette simulation par des simples
+13. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
+(non-informaticien donc) de déposer des enchères pour le produit en affichant les informations sur le produit
+et l'offre gagnante en cours. Pensez à testez que les offres d'enchère non-valides ne puissent pas être déposées à un produit. Vous pouvez effectuer cette simulation par des simples
 affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
 classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères.
 Voici un petit exemple de ce que vous pouvez faire avec :
