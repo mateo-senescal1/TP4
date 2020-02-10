@@ -30,7 +30,7 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
 
 Comme d'habitude, cliquez sur le lien ci-dessous pour faire votre fork privé du TP :
 
-LIEN CLASSROOM A CREER
+https://classroom.github.com/a/aT6i1xXH
 
 
 Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système,
