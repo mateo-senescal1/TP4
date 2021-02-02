@@ -1,14 +1,16 @@
-# ![](ressources/logo.jpeg) Bases de la programmation orientée objet 
+# ![](ressources/logo.jpeg)
+
+# Bases de la programmation orientée objet
 
 ### IUT Montpellier-Sète – Département Informatique
 
 * **Cours:** [M2103](http://cache.media.enseignementsup-recherche.gouv.fr/file/25/09/7/PPN_INFORMATIQUE_256097.pdf) - support [ici](https://github.com/IUTInfoMontp-M2103/Ressources)
-* **Enseignants:** [Marin Bougeret](mailto:marin.bougeret@umontpellier.fr), [Sébastien Gagné](mailto:sebastien.gagne@umontpellier.fr), [Sophie Nabitz](mailto:sophie.nabitz@univ-avignon.fr), [Jérôme Palaysi](mailto:jerome.palaysi@umontpellier.fr), [Victor Poupet](mailto:victor.poupet@umontpellier.fr), [Petru Valicov](mailto:petru.valicov@umontpellier.fr)
-* Le [forum Piazza](https://piazza.com/class/k52c8w685w3210) de ce cours pour poser vos questions
+* **Enseignants:** [Marin Bougeret](mailto:marin.bougeret@umontpellier.fr), [Romain Lebreton](mailto:romain.lebreton@umontpellier.fr), [Sophie Nabitz](mailto:sophie.nabitz@univ-avignon.fr), [Victor Poupet](mailto:victor.poupet@umontpellier.fr), [Petru Valicov](mailto:petru.valicov@umontpellier.fr)
+* Le [forum Piazza](https://piazza.com/class/kjifrxy1n0i3xa) de ce cours pour poser vos questions
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
 * Le [sujet du TP](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/TP4.pdf) en format .pdf téléchargeable et imprimable.
 
-Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'espace de stockage autorisé :
+<!--Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'espace de stockage autorisé :
 
 * placez-vous dans votre `$HOME` et utilisez les commandes suivantes :
     * `du -sh` pour voir combien d'espace vous avez déjà utilisé
@@ -16,13 +18,13 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
     * `du -sch .[!.]* *` pour voir combien d'espace vous avez déjà utilisé pour chaque fichier, y compris les fichiers cachés
 * Supprimez les fichiers inutiles.
 * Pour éviter des problèmes durant vos TPs d'informatique, vous devriez toujours **garder 300-400 Mo d'espace libre**.
-
+-->
 
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
 - Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
-- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 16 février à 23h00**
+- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 14 février à 23h00**
 
 
 ## TP 4 : Systèmes d'enchères
@@ -105,10 +107,10 @@ pas arrêtée, etc) et l'ajoute à la liste d'offres d'enchères de la classe `P
 
 13. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
 (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit
-et l'offre gagnante en cours. Pensez à **tester** que les offres d'enchère non-valides ne puissent pas être déposées. Vous pouvez effectuer cette simulation par des simples
-affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
-classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères.
-Voici un petit exemple de ce que vous pouvez faire avec :
+    et l'offre gagnante en cours. Pensez à **tester** que les offres d'enchère non-valides ne puissent pas être déposées. Vous pouvez effectuer cette simulation par des simples
+    affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
+    classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères.
+    Voici un petit exemple de ce que vous pouvez faire avec :
 
     ```java
     
@@ -116,7 +118,7 @@ Voici un petit exemple de ce que vous pouvez faire avec :
     
     class IBaille {
     
-        public static void main(String args[]) {
+        public static void main(String[] args) {
         
             // on attache un objet Scanner au flux d'entrée associée à la console
             Scanner saisie = new Scanner(System.in);
