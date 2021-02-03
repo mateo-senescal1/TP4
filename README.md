@@ -34,7 +34,6 @@ Comme d'habitude, cliquez sur le lien ci-dessous pour faire votre fork privé du
 
 https://classroom.github.com/a/aT6i1xXH
 
-
 Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système,
 voici le principe général de fonctionnement :
 
@@ -45,7 +44,11 @@ voici le principe général de fonctionnement :
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
 * lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser
-en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement. Par définition, le gagnant est celui dont le prix courant est supérieur aux prix maximaux proposés par les autres utilisateurs.
+  en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement :
+    * étant donné  `c` un prix courant du produit et l'enchère gagnante actuelle dont le maximum est `M1`, quand une nouvelle offre avec un maximum `m2, M2` est valide si : `M2 &ge; m2 &ge; c + &delta;`
+    * si `M1 &ge; M2`, alors le gagnant ne change pas et le nouveau prix  `c &leftarrow; M2`
+    * si `M1 < M2`, alors la nouvelle enchère est désignée comme gagnante et le nouveaux prix courant du produit est `c = max(M1,c+&delta;)`
+      Par définition, le gagnant est celui dont le prix courant est supérieur aux prix maximaux proposés par les autres utilisateurs.
 
 **Remarque** : Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère.
 Par exemple, il pourra le faire si son offre a été "battue" par un un autre enchérisseur.
