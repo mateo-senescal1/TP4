@@ -69,11 +69,13 @@ Vous pouvez supposer que la date et l'heure courantes représentent le début. P
 
 1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix courant.
 
-    **Remarque :** dans le constructeur de cette classe, il n'est pas demandé de vérifier que les attributs de l'offre créé sont cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
+    **Remarque :** dans le constructeur de cette classe, il n'est pas demandé de vérifier que les attributs de l'offre créée soient cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
 
-1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe Compte. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne null si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
+1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
 
-   Pour stocker les offre, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
+   Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
+
+    **Pensez à écrire des tests unitaires... beaucoup de tests unitaires !**
 
 1. Complétez la méthode `boolean ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle vérifie si `o` est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est pas arrêtée, etc.) et dans le cas échéant l'ajoute à la liste d'offres d'enchères de la classe `Produit`. La méthode devra retourner `true` si l'enchère est valide et `false` sinon.
 
