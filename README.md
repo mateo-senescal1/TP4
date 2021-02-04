@@ -44,13 +44,13 @@ voici le principe général de fonctionnement :
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
 * lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser
-  en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre **(c<sub>2</sub>**, **M<sub>2</sub>)** arrive, elle est valide si : **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
+  en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre d'enchère **(c<sub>2</sub>**, **M<sub>2</sub>)** arrive :
+    * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
     * si **M<sub>1</sub>** < **M<sub>1</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max(**M1, c+&delta;**)
-      Par définition, le gagnant est celui dont le prix courant est supérieur aux prix maximaux proposés par les autres utilisateurs.
+      Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par dans l'enchère gagnante actuelle.
 
-**Remarque** : Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère.
-Par exemple, il pourra le faire si son offre a été "battue" par un un autre enchérisseur.
+**Remarque** : Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
 
 
@@ -78,36 +78,25 @@ Ajoutez un constructeur approprié.
 
 5. Ajoutez à la classe `Compte` une méthode qui permet de créditer le compte avec une somme donnée.
 
-6. Implémentez une classe `OffreEnchere` qui représentera une enchère proposée par un utilisateur pour un produit donné.
-Cette classe aura entre autres comme attributs : une date, une heure, un prix "_en cours_", et un prix maximal autorisé (en cas
-d'enchère automatique). Ajoutez un constructeur approprié.
+6. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ces attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix courant.
 
-    **Remarque :** nul besoin de passer la date et l'heure en paramètres
-     du constructeur. Vous vous contenterez d'utiliser la date et l'heure courantes.
-     
-    **Remarque :** ici, dans le constructeur, il n'est pas demandé de vérifier que les attributs de l'offre créé sont cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
-     
-7. Implémentez les méthodes `toString()` pour chacune des 3 classes que vous avez écrites.
+    **Remarque :** dans le constructeur de cette classe, il n'est pas demandé de vérifier que les attributs de l'offre créé sont cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
 
-8. Ajoutez dans la classe `OffreEnchere`, des méthodes accesseurs (_getters_) pour le prix et le prix maximal.
-
-9. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix.
-
-10. Ajoutez à la classe `Compte` le code nécessaire afin que cette classe possède une méthode `creerOffre(...)`, qui :
-prend en paramètres un produit, un prix courant et un prix maximal;
-crée une offre d'enchère et ajoute cette offre à sa liste d'offres d'enchères. Pour vous simplifier la tâche,
-on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_,
+7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe Compte. Cette méthode devra créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. 
+      
+    Pour vous simplifier la tâche, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_,
 comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
 
-11. Ajoutez à la classe `Produit` une méthode `ajouterOffre(...)`, qui prend comme paramètre une offre d'enchère,
-vérifie si cette offre est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est
-pas arrêtée, etc) et l'ajoute à la liste d'offres d'enchères de la classe `Produit`.
+8. Complétez la méthode `boolean ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle vérifie si `o` est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est
+pas arrêtée, etc) et dans le cas échéant l'ajoute à la liste d'offres d'enchères de la classe `Produit`. La méthode devra retourner `true` si l'enchère est valide et `false` sinon.
 
-    **Sans modifier les autres classes**, pensez à mettre à jour correctement les valeurs de prix des différentes entités de votre application.
+    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application.
 
-12. Ajoutez à la classe `Produit` une méthode `getGagnant()` qui renvoie la meilleure offre d'enchère.
+    **Remarque :** écrire des tests unitaires pour cette fonction est fortement conseillé.
 
-13. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
+9. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
+
+10. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
 (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit
     et l'offre gagnante en cours. Pensez à **tester** que les offres d'enchère non-valides ne puissent pas être déposées. Vous pouvez effectuer cette simulation par des simples
     affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
