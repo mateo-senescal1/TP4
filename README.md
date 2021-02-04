@@ -44,10 +44,9 @@ voici le principe général de fonctionnement :
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
 * lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser
-  en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement :
-    * étant donné  `c` un prix courant du produit et l'enchère gagnante actuelle dont le maximum est `M1`, quand une nouvelle offre avec un maximum `m2, M2` est valide si : `M2 &ge; m2 &ge; c + &delta;`
-    * si `M1 &ge; M2`, alors le gagnant ne change pas et le nouveau prix  `c &leftarrow; M2`
-    * si `M1 < M2`, alors la nouvelle enchère est désignée comme gagnante et le nouveaux prix courant du produit est `c = max(M1,c+&delta;)`
+  en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égale au prix courant du produit + le pas d'enchere), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre **(c<sub>2</sub>**, **M<sub>2</sub>)** arrive, elle est valide si : **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
+    * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
+    * si **M<sub>1</sub>** < **M<sub>1</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max(**M1, c+&delta;**)
       Par définition, le gagnant est celui dont le prix courant est supérieur aux prix maximaux proposés par les autres utilisateurs.
 
 **Remarque** : Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère.
