@@ -54,54 +54,38 @@ voici le principe général de fonctionnement :
 
 
 
-1. Implémentez une classe `Produit` avec les attributs suivants : numéro, description (un texte), prix courant,
-date de début d'enchère (type `LocalDate` du package `java.time`), heure de début d'enchère (type `LocalTime` du package
- `java.time`), montant du pas d'enchère minimal, coût de participation. Ajoutez un constructeur avec comme paramètres : le numéro,
-  la description, le prix courant et le coût de participation.
- 
-2. Comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur.
-Proposez une solution dans votre programme pour satisfaire cette contrainte.
+1. La classe `Produit` vous est partiellement donnée et quelque chose a été oublié : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte.
 
-    **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_
-qui est censé de se servir de votre application pour poursuivre son développement et pour la maintenance, le débuggage etc.
+    **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé de se servir de votre application pour poursuivre son développement et pour la maintenance, le débuggage etc.
 Ici l'utilisateur c'est l'informaticien.
 
-3. Ajoutez à la classe  `Produit` une méthode `demarrerEnchere(...)` qui rendra l'objet disponible à l'enchère.
-Vous ajouterez à cette classe les autres éléments qui vous paraissent nécessaires pour que cette méthode fonctionne.
+1. Implémentez la méthode `demarrerEnchere(...)` de `Produit` pour qu'elle rende l'objet disponible à l'enchère. Vous ajouterez à cette classe les autres éléments qui vous paraissent nécessaires pour que cette méthode fonctionne.
 Vous pouvez supposer que la date et l'heure courantes représentent le début. Pour cela vous pouvez utiliser les méthodes
 `LocalDate.now()` et `LocalTime.now()`, respectivement.
 
-    Ajoutez également la méthode réciproque `arreterEnchere(...)`.
+   Implémentez également la méthode réciproque `arreterEnchere(...)`.
  
-4. Implémentez une classe `Compte`  avec les attributs suivants : pseudo, email, adresse, solde de compte.
-Ajoutez un constructeur approprié.
+1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée.
 
-5. Ajoutez à la classe `Compte` une méthode qui permet de créditer le compte avec une somme donnée.
-
-6. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ces attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix courant.
+1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix courant.
 
     **Remarque :** dans le constructeur de cette classe, il n'est pas demandé de vérifier que les attributs de l'offre créé sont cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
 
-7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe Compte. Cette méthode devra créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. 
-      
-    Pour vous simplifier la tâche, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_,
-comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
+1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe Compte. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne null si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
 
-8. Complétez la méthode `boolean ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle vérifie si `o` est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est
-pas arrêtée, etc) et dans le cas échéant l'ajoute à la liste d'offres d'enchères de la classe `Produit`. La méthode devra retourner `true` si l'enchère est valide et `false` sinon.
+   Pour stocker les offre, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
+
+1. Complétez la méthode `boolean ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle vérifie si `o` est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est pas arrêtée, etc.) et dans le cas échéant l'ajoute à la liste d'offres d'enchères de la classe `Produit`. La méthode devra retourner `true` si l'enchère est valide et `false` sinon.
 
     **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application.
 
     **Remarque :** écrire des tests unitaires pour cette fonction est fortement conseillé.
 
-9. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
+1. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
 
-10. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel
-(non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit
-    et l'offre gagnante en cours. Pensez à **tester** que les offres d'enchère non-valides ne puissent pas être déposées. Vous pouvez effectuer cette simulation par des simples
-    affichages sur la console. Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la
-    classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères.
-    Voici un petit exemple de ce que vous pouvez faire avec :
+1. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
+   
+    Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères. Voici un petit exemple de ce que vous pouvez faire avec :
 
     ```java
     
@@ -125,4 +109,4 @@ pas arrêtée, etc) et dans le cas échéant l'ajoute à la liste d'offres d'enc
     
     }
     ```
-Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
+Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html
