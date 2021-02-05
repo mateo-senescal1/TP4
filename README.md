@@ -23,8 +23,9 @@
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
-- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
-- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 14 février à 23h00**
+- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
+- **Sauf indication contraire, vous ne devrez pas modifier la signature des méthodes et des attributs des classes qui vous sont proposées.**
+- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 14 février à 23h00**.
 
 
 ## TP 4 : Systèmes d'enchères
@@ -50,30 +51,28 @@ voici le principe général de fonctionnement :
     * si **M<sub>1</sub>** < **M<sub>1</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max(**M1, c+&delta;**)
       Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 
-**Remarque** : Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
+Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
 
 
-1. La classe `Produit` vous est partiellement donnée et quelque chose a été oublié : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte.
+1. La classe `Produit` vous est partiellement donnée mais quelque chose a été oublié : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également la méthode `setPasEnchere()` ?
 
     **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé de se servir de votre application pour poursuivre son développement et pour la maintenance, le débuggage etc.
 Ici l'utilisateur c'est l'informaticien.
 
-1. Implémentez la méthode `demarrerEnchere(...)` de `Produit` pour qu'elle rende l'objet disponible à l'enchère. Vous ajouterez à cette classe les autres éléments qui vous paraissent nécessaires pour que cette méthode fonctionne.
-Vous pouvez supposer que la date et l'heure courantes représentent le début. Pour cela vous pouvez utiliser les méthodes
-`LocalDate.now()` et `LocalTime.now()`, respectivement.
+1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible à l'enchère à la date et à l'heure courante (`LocalDate.now()` et `LocalTime.now()`, respectivement). Vous ajouterez à cette classe les autres éléments qui vous paraissent nécessaires pour que cette méthode fonctionne.
 
-   Implémentez également la méthode réciproque `arreterEnchere(...)`.
+   Implémentez également la méthode réciproque `void arreterEnchere()`.
  
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée.
 
-1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix courant.
+1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix en cours.
 
-    **Remarque :** dans le constructeur de cette classe, il n'est pas demandé de vérifier que les attributs de l'offre créée soient cohérents avec celles du produit (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
+    **Remarque :** observez que dans le constructeur de cette classe, aucune vérification concernant la cohérence des attributs de l'offre créée avec ceux du produit n'a été faite (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
 
 1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
 
-   Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList` (mais vous êtes libres d'utiliser d'autres solutions).
+   Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
 
     **Pensez à écrire des tests unitaires... beaucoup de tests unitaires !**
 
