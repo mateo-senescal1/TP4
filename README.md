@@ -48,8 +48,9 @@ voici le principe général de fonctionnement :
     * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
     * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max(**M1, c<sub>2</sub>**)
-      
-    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
+    * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
+<!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
+-->
 
 Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
@@ -68,7 +69,9 @@ Ici l'utilisateur c'est l'informaticien.
 
 1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix en cours.
 
-    **Remarque :** observez que dans le constructeur de cette classe, aucune vérification concernant la cohérence des attributs de l'offre créée avec ceux du produit n'a été faite (ce n'est pas la responsabilité de l'objet `OffreEnchere`)
+    **Remarque :** observez que dans le constructeur de cette classe, aucune vérification concernant la cohérence des attributs de l'offre créée avec ceux du produit n'a été faite (ce n'est pas la responsabilité de l'objet `OffreEnchere`).
+
+   **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
 1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
 

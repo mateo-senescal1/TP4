@@ -9,6 +9,7 @@ public class OffreEnchere {
     private double prixEnCours;
     private double prixMax;
     private Produit produit;
+    private boolean estGagnant;
 
     public OffreEnchere(double prixEnCours, double prixMax, Produit produit) {
         this.prixEnCours = prixEnCours;
@@ -16,6 +17,7 @@ public class OffreEnchere {
         this.produit = produit;
         date = LocalDate.now();
         heure = LocalTime.now();
+        estGagnant = false;
     }
 
     public double getPrixEnCours() {
@@ -24,6 +26,10 @@ public class OffreEnchere {
 
     public double getPrixMax() {
         return prixMax;
+    }
+
+    public void setEstGagnant(boolean estGagnant) {
+        this.estGagnant = estGagnant;
     }
 
 }
