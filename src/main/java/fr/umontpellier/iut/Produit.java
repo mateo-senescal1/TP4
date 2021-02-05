@@ -8,8 +8,6 @@ public class Produit {
     private int numProduit;
     private String descriptionProduit;
     private double prixCourant;
-    private LocalDate dateDebutEnchere;
-    private LocalTime heureDebutEnchere;
     private double pasEnchere;
     private double coutParticipation;
 
