@@ -16,7 +16,6 @@ public class Produit {
     private boolean enchereEnCours = false;
 
     private ArrayList<OffreEnchere> encheresDeposees;
-    private OffreEnchere enchereGagnanteActuelle;
 
     public Produit(int numProduit, String descriptionProduit, double prixCourant, double coutParticipation) {
         this.descriptionProduit = descriptionProduit;
@@ -41,23 +40,6 @@ public class Produit {
 
     public boolean ajouterOffre(OffreEnchere o) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
-    }
-
-
-    @Override
-    public String toString() {
-        return "Produit{" +
-                "numProduit=" + numProduit +
-                ", dateDebutEnchere=" + dateDebutEnchere +
-                ", heureDebutEnchere=" + heureDebutEnchere +
-                ", \n coutParticipation=" + coutParticipation +
-                ", pasEnchere=" + pasEnchere +
-                ", \n descriptionProduit='" + descriptionProduit + '\'' +
-                ", \n prixCourant=" + prixCourant +
-                ", vente en cours ? : " + enchereEnCours +
-                ", \n enchereGagnanteActuelle=" + enchereGagnanteActuelle +
-                ", liste des encheres deposees =" + encheresDeposees +
-                '}';
     }
 
     public double getCoutParticipation() {

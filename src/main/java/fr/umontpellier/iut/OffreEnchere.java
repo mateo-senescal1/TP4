@@ -10,8 +10,6 @@ public class OffreEnchere {
     private double prixMax;
     private Produit produit;
 
-    private Compte proprioOffre;
-
     public OffreEnchere(double prixEnCours, double prixMax, Produit produit) {
         this.prixEnCours = prixEnCours;
         this.prixMax = prixMax;
@@ -28,13 +26,4 @@ public class OffreEnchere {
         return prixMax;
     }
 
-    @Override
-    public String toString() {
-        return "OffreEnchere{" +
-                "date=" + date +
-                ", heure=" + heure +
-                ", prixEnCours=" + prixEnCours +
-                ", prixMax=" + prixMax +
-                '}';
-    }
 }
