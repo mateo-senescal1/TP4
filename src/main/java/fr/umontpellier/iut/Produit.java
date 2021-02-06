@@ -7,13 +7,14 @@ public class Produit {
     private double pasEnchere;
     private double coutParticipation;
 
-    private boolean disponible = false;
+    private boolean disponible;
 
     public Produit(int numProduit, String descriptionProduit, double prixCourant, double coutParticipation) {
         this.descriptionProduit = descriptionProduit;
         this.prixCourant = prixCourant;
         this.coutParticipation = coutParticipation;
         this.numProduit = numProduit;
+        disponible = false;
     }
 
     public int getNumProduit() {
