@@ -82,9 +82,9 @@ Ici l'utilisateur c'est l'informaticien.
 
 1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`.
 
-    **Remarque :** Dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires. 
+    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires. 
 
-    **Remarque :** Écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
+    **Remarque :** écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
 
 1. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
 
@@ -118,6 +118,6 @@ Ici l'utilisateur c'est l'informaticien.
     
     }
     ```
-Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html
+    Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html
 
-1. **Bonus** : dessinez le diagramme de classes de votre application
+1. **Bonus** : dessinez le diagramme de classes de votre application.
