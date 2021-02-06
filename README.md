@@ -25,7 +25,7 @@
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
 - Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
 - **Sauf indication contraire, vous ne devrez pas modifier la signature des méthodes et des attributs des classes qui vous sont proposées.**
-- Date limite de rendu de votre code sur le dépôt GitHub : **Dimanche 14 février à 23h00**.
+- Date limite de rendu de votre code sur le dépôt GitHub : **dimanche 14 février à 23 h 00**.
 
 
 ## TP 4 : Systèmes d'enchères
@@ -43,7 +43,7 @@ voici le principe général de fonctionnement :
 * pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- benefice du site ;
 * à chaque enchérissement, le prix de base du produit augmente ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
-* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
+* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendu via **iBaille**;
 * lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; le montant correspondant au prix maximal est bloqué sur le compte durant la période d'enchère ;
 * si un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle (si cette enchère existe). Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
     * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
@@ -119,3 +119,5 @@ Ici l'utilisateur c'est l'informaticien.
     }
     ```
 Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html
+
+1. **Bonus** : dessinez le diagramme de classes de votre application
