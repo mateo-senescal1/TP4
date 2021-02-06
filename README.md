@@ -80,9 +80,9 @@ Ici l'utilisateur c'est l'informaticien.
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
-1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`.
+1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`. À cette étape, si ce n'est pas encore fait, vous devriez également implémenter la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`.
 
-    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires. 
+    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
     **Remarque :** écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
 
