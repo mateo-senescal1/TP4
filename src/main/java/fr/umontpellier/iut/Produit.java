@@ -1,7 +1,5 @@
 package fr.umontpellier.iut;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Produit {
@@ -13,14 +11,15 @@ public class Produit {
 
     private boolean enchereEnCours = false;
 
-    private ArrayList<OffreEnchere> encheresDeposees;
-
     public Produit(int numProduit, String descriptionProduit, double prixCourant, double coutParticipation) {
         this.descriptionProduit = descriptionProduit;
         this.prixCourant = prixCourant;
         this.coutParticipation = coutParticipation;
         this.numProduit = numProduit;
-        encheresDeposees = new ArrayList<>();
+    }
+
+    public int getNumProduit() {
+        return numProduit;
     }
 
     // question 2
@@ -36,7 +35,7 @@ public class Produit {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 
-    public boolean ajouterOffre(OffreEnchere o) {
+    public void ajouterOffre(OffreEnchere o) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 

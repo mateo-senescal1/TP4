@@ -33,7 +33,7 @@
 
 Comme d'habitude, cliquez sur le lien ci-dessous pour faire votre fork privé du TP :
 
-https://classroom.github.com/a/aT6i1xXH
+https://classroom.github.com/a/8Zb-0rRU
 
 Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système,
 voici le principe général de fonctionnement :
@@ -73,21 +73,23 @@ Ici l'utilisateur c'est l'informaticien.
 
    **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
-1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
+1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est pas arrêtée, etc.) et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
 
    Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
 
     **Pensez à écrire des tests unitaires... beaucoup de tests unitaires !**
 
-1. Complétez la méthode `boolean ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle vérifie si `o` est __valide__ (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est pas arrêtée, etc.) et dans le cas échéant l'ajoute à la liste d'offres d'enchères de la classe `Produit`. La méthode devra retourner `true` si l'enchère est valide et `false` sinon.
+1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`.
 
-    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application.
+    **Remarque :** Dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires. 
 
-    **Remarque :** écrire des tests unitaires pour cette fonction est fortement conseillé.
+    **Remarque :** Écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
 
 1. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
 
-1. Générez les méthodes `toString()` appropriées dans les classes `Compte`, `OffreEnchere` et `Produit`.
+1. Écrivez la méthode `toString()` appropriées dans la classe `Compte`. Libre à vous de décider les informations à retourner, mais en ce qui concerne les offres du compte, seules les offres gagnantes actuelles du compte devraient être affichées.
+   
+1. Écrivez la méthode `toString()` appropriées dans la classe `Produit`. Parmi les différentes offres déposées, seule l'offre gagnante actuelle devrait être affichée.
 
 1. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
    
