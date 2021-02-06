@@ -40,14 +40,15 @@ voici le principe général de fonctionnement :
 
 * des produits sont mis en vente avec un prix initial (le prix de base) ;
 * des utilisateurs peuvent enchérir sur les produits jusqu'à ce que l'enchère soit arrêtée ;
-* pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ;
+* pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- benefice du site ;
 * à chaque enchérissement, le prix de base du produit augmente ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
-* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
+* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; le montant correspondant au prix maximal est bloqué sur le compte durant la période d'enchère ;
+* si un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle (si cette enchère existe). Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
     * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
-    * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)**
+    * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)** ; dans ce cas il faudrait également débloquer la somme correspondante du compte du perdant
     * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
 <!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 -->
@@ -73,11 +74,11 @@ Ici l'utilisateur c'est l'informaticien.
 
    **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
-1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit vérifier que les conditions de création de l'offre sont réunies (en vérifiant le pas d'enchère, le fait que la session d'enchère du produit n'est pas arrêtée, etc.) et dans le cas échéant créer une offre d'enchère et l'ajouter à sa liste d'offres d'enchères. La méthode retourne `null` si l'offre n'a pas pu être créée (les conditions n'étaient pas réunies). 
+1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit créer une offre en vérifiant que cette offre soit __valide__ (cohérence des prix et du solde de compte, du pas d'enchère, de la disponibilité du produit, etc.) et dans le cas échéant ajouter l'offre d'enchère à sa liste d'offres d'enchères. La méthode devra retourner `null` si les conditions ne sont pas réunies. Ici vous devriez utiliser (implémenter) la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`
 
    Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
 
-    **Pensez à écrire des tests unitaires... beaucoup de tests unitaires !**
+    **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
 1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`.
 
