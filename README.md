@@ -56,12 +56,11 @@ voici le principe général de fonctionnement :
 Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
 
-Un squelette du code vous est fourni. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
+Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
 1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également la méthode `void setPasEnchere()` ?
 
-    **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc.
-Ici l'utilisateur c'est l'informaticien.
+    **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc. Ici l'utilisateur c'est l'informaticien.
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
    Implémentez également la méthode réciproque `void arreterEnchere()`.
@@ -80,9 +79,9 @@ Ici l'utilisateur c'est l'informaticien.
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
-1. Complétez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit`. À cette étape, si ce n'est pas encore fait, vous devriez également implémenter la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`.
+1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. À cette étape, si ce n'est pas encore fait, vous devriez également implémenter la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`.
 
-    **Remarque :** dans cette méthode pensez à mettre à jour correctement les différentes entités de votre application. Vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
+    **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
     **Remarque :** écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
 
