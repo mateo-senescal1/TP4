@@ -44,10 +44,10 @@ voici le principe général de fonctionnement :
 * à chaque enchérissement, le prix de base du produit augmente ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits ;
-* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre d'enchère **(c<sub>2</sub>**, **M<sub>2</sub>)** arrive :
+* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; ainsi, si par la suite, un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle. Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
     * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
-    * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max(**M1, c<sub>2</sub>**)
+    * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)**
     * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
 <!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 -->
@@ -55,14 +55,14 @@ voici le principe général de fonctionnement :
 Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
 
+Un squelette du code vous est fourni. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
-1. La classe `Produit` vous est partiellement donnée mais quelque chose a été oublié : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également la méthode `void setPasEnchere()` ?
+1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être le même pour tous les produits mais modifiable par l'utilisateur. Modifiez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également la méthode `void setPasEnchere()` ?
 
-    **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement et pour la maintenance, le débuggage etc.
+    **Remarque** : Ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc.
 Ici l'utilisateur c'est l'informaticien.
 
-1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible. Vous ajouterez à cette classe les autres éléments qui vous paraissent nécessaires pour que cette méthode fonctionne.
-
+1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
    Implémentez également la méthode réciproque `void arreterEnchere()`.
  
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée.
