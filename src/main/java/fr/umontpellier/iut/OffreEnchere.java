@@ -30,7 +30,7 @@ public class OffreEnchere {
         return prixMax;
     }
 
-    public void setEstGagnante(boolean estGagnante) {
+    public void setEstGagnante(boolean etat) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 

@@ -49,7 +49,7 @@ voici le principe général de fonctionnement :
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
     * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)** ; dans ce cas il faudrait également débloquer la somme correspondante du compte du perdant
     * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
-    * un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
+* un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 <!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 -->
 
@@ -79,7 +79,7 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
-1. Implémentez la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer (à non gagnante) une enchère qui vient d'être battue, et il faudra alors recréditer le compte de l'enchérisseur qui n'est plus gagnant.
+1. Implémentez la méthode `setEstGagnante(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Pensez à mettre à jour le compte de l'enchérisseur perdant.
    
 1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. Vous aurez à utiliser la méthode `setEstGagnante` de la classe `OffreEnchere`.
 
