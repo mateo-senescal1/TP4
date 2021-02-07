@@ -59,7 +59,7 @@ class ProduitTest {
     void ajouterOffre_quand_pas_d_offre() {
         OffreEnchere o = new OffreEnchere(15, 20, produit, compte);
         produit.ajouterOffre(o);
-        assertSame(produit.getGagnant(), o);
+        assertSame(produit.getOffreGagnante(), o);
     }
 
     @Disabled
@@ -69,7 +69,7 @@ class ProduitTest {
         produit.ajouterOffre(o);
         OffreEnchere o2 = new OffreEnchere(16, 20, produit, compte);
 
-        assertSame(produit.getGagnant(), o);
+        assertSame(produit.getOffreGagnante(), o);
     }
 
 

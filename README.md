@@ -41,20 +41,17 @@ voici le principe général de fonctionnement :
 * des produits sont mis en vente avec un prix initial (le prix de base) ;
 * des utilisateurs peuvent enchérir sur les produits jusqu'à ce que l'enchère soit arrêtée ;
 * pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- benefice du site ;
-* à chaque enchérissement, le prix de base du produit augmente ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
-* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendu via **iBaille**;
-* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; le montant correspondant au prix maximal est bloqué sur le compte durant la période d'enchère ;
-* si un autre utilisateur fait une enchère supplémentaire valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. En effet, étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle (si cette enchère existe). Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
+* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
+* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; le montant correspondant au prix maximal est bloqué sur le compte de l'enchérisseur durant la période d'enchère ;
+* à une enchère valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. Le nouveau prix est calculé selon les règles suivantes : étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle (si cette enchère existe). Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
     * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
     * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
     * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)** ; dans ce cas il faudrait également débloquer la somme correspondante du compte du perdant
     * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
+    * un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 <!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 -->
-
-Un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
-
 
 Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
@@ -64,6 +61,7 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
    Implémentez également la méthode réciproque `void arreterEnchere()`.
+   Les enchères seront ouvertes et clôturées sur appel explicite de ces deux méthodes.
  
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée.
 
@@ -73,19 +71,23 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
    **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
-1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit créer une offre en vérifiant que cette offre soit __valide__ (cohérence des prix et du solde de compte, du pas d'enchère, de la disponibilité du produit, etc.) et dans le cas échéant ajouter l'offre d'enchère à sa liste d'offres d'enchères. La méthode devra retourner `null` si les conditions ne sont pas réunies. Si l'offre est valide alors le cout de participation devrait être débité et le cout maximal de l'offre bloqué sur le compte. Ici vous devriez utiliser (implémenter) la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`
+1. Écrivez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est valide. Pensez à vérifier que les enchères ne sont pas clôturées.
 
-   Pour stocker les offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
+1. Dans la classe `Produit`, vous devrez conserver les offres émises sur ce produit. Pour stocker ces offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
+   
+1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit créer une offre en vérifiant que cette offre soit __valide__ (cohérence des prix et du solde de compte, du pas d'enchère, de la disponibilité du produit, etc.) et dans le cas échéant ajouter l'offre d'enchère à sa liste d'offres d'enchères. La méthode devra retourner `null` si les conditions ne sont pas réunies. Si l'offre est valide alors le coût de participation devrait être débité et le coût maximal de l'offre bloqué sur le compte. Ici vous devriez utiliser la méthode `verifierOffre(OffreEnchere offre)` de la classe `Produit`.
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
-1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. À cette étape, si ce n'est pas encore fait, vous devriez également implémenter la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`.
+1. Implémentez la méthode `setEstGagnante(boolean estGagnante)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer (à non gagnante) une enchère qui vient d'être battue, et il faudra alors recréditer le compte de l'enchérisseur qui n'est plus gagnant.
+   
+1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. Vous aurez à utiliser la méthode `setEstGagnante` de la classe `OffreEnchere`.
 
     **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
     **Remarque :** écrire des tests unitaires pour cette fonction et toutes les fonctions auxiliaires est fortement conseillé.
 
-1. Implémentez la méthode `getGagnant()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
+1. Implémentez la méthode `getOffreGagnante()` de la classe `Produit`. Elle devra renvoyer la meilleure offre d'enchère.
 
 1. Écrivez la méthode `toString()` appropriée dans la classe `Compte`. Libre à vous de décider les informations à retourner, mais en ce qui concerne les offres du compte, seules les offres gagnantes actuelles du compte devraient être affichées.
    
