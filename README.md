@@ -71,10 +71,10 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
    **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
+1. Dans la classe `Produit`, vous devrez conserver les offres émises sur ce produit. Pour stocker ces offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
+
 1. Implémentez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est valide. Pensez à vérifier que les enchères ne sont pas clôturées.
 
-1. Dans la classe `Produit`, vous devrez conserver les offres émises sur ce produit. Pour stocker ces offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
-   
 1. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prix, double prixMax)` de la classe `Compte`. Cette méthode doit créer une offre en vérifiant que cette offre soit __valide__ (cohérence des prix et du solde de compte, du pas d'enchère, de la disponibilité du produit, etc.) et dans le cas échéant ajouter l'offre d'enchère à sa liste d'offres d'enchères. La méthode devra retourner `null` si les conditions ne sont pas réunies. Si l'offre est valide alors le coût de participation devrait être débité et le coût maximal de l'offre bloqué sur le compte. Ici vous devriez utiliser la méthode `verifierOffre(OffreEnchere offre)` de la classe `Produit`.
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
