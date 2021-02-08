@@ -9,7 +9,7 @@ public class OffreEnchere {
     private double prixEnCours;
     private double prixMax;
     private Produit produit;
-    private boolean estGagnante;
+    private boolean etatGagnant;
     private Compte monCompte;
 
     public OffreEnchere(double prixEnCours, double prixMax, Produit produit, Compte monCompte) {
@@ -18,7 +18,7 @@ public class OffreEnchere {
         this.produit = produit;
         date = LocalDate.now();
         heure = LocalTime.now();
-        estGagnante = false;
+        etatGagnant = false;
         this.monCompte = monCompte;
     }
 
@@ -30,7 +30,7 @@ public class OffreEnchere {
         return prixMax;
     }
 
-    public void setEstGagnante(boolean etat) {
+    public void setEtatGagnant(boolean etat) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 
@@ -42,7 +42,7 @@ public class OffreEnchere {
                 ", prixEnCours=" + prixEnCours +
                 ", prixMax=" + prixMax +
                 ", produit=" + produit.getNumProduit() +
-                ", estGagnante  ? -> " + estGagnante +
+                ", est gagnante  ? -> " + etatGagnant +
                 '}';
     }
 }

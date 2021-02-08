@@ -23,7 +23,7 @@
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
-- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
+- Essayez de respecter les conventions de nommage *Java* (voir la fin des transparents du [cours](http://pageperso.lis-lab.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
 - **Sauf indication contraire, vous ne devrez pas modifier la signature des méthodes et des attributs des classes qui vous sont proposées.**
 - Date limite de rendu de votre code sur le dépôt GitHub : **dimanche 14 février à 23 h 00**.
 
@@ -40,15 +40,15 @@ voici le principe général de fonctionnement :
 
 * des produits sont mis en vente avec un prix initial (le prix de base) ;
 * des utilisateurs peuvent enchérir sur les produits jusqu'à ce que l'enchère soit arrêtée ;
-* pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- benefice du site ;
+* pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- bénéfice du site ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
-* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente; le montant correspondant au prix maximal est bloqué sur le compte de l'enchérisseur durant la période d'enchère ;
+* lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente ; le montant correspondant au prix maximal est bloqué sur le compte de l'enchérisseur durant la période d'enchère ;
 * à chaque enchère valide (c'est-à-dire avec un montant au moins égal au prix courant du produit + le pas d'enchère), le prix courant du produit augmente automatiquement. Le nouveau prix est calculé selon les règles suivantes : étant donné un produit, soient **c** son prix courant, **&delta;** le pas d'enchère, **M<sub>1</sub>** le maximum de l'enchère gagnante actuelle (si cette enchère existe). Quand une nouvelle offre d'enchère **(c<sub>2</sub>, M<sub>2</sub>)** arrive :
-    * elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;**;
-    * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>**
-    * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)** ; dans ce cas il faudrait également débloquer la somme correspondante du compte du perdant
-    * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est désignée comme gagnante est le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>**
+    * si ce n'est pas la première enchère, alors elle est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c + &delta;** ;
+        * si **M<sub>1</sub>** &ge; **M<sub>2</sub>**, alors le gagnant ne change pas et le nouveau prix est **c** &leftarrow; **M<sub>2</sub>** ;
+        * si **M<sub>1</sub>** < **M<sub>2</sub>**, alors la nouvelle enchère est désignée comme gagnante et le nouveau prix courant du produit est **c** &leftarrow; max **(M1, c<sub>2</sub>)** ; dans ce cas il faudrait également débloquer la somme correspondante du compte du perdant ;
+    * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre d'enchère est valide si **M<sub>2</sub>** &ge; **c<sub>2</sub>**  &ge; **c** et dans ce cas elle est désignée comme gagnante, et le prix courant du produit devient **c** &leftarrow; **c<sub>2</sub>** ;
 * un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 <!--    Par définition, le gagnant est celui dont le prix courant est supérieur au prix maximal proposé par tous les autres enchérisseurs.
 -->
@@ -65,13 +65,13 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
  
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée.
 
-1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere`, une méthode modifieur (_setter_) pour le prix en cours.
+1. La classe `OffreEnchere` représentera une enchère proposée par un utilisateur pour un produit donné. Certains de ses attributs et méthodes vous sont donnés. Ajoutez dans la classe `OffreEnchere` une méthode modifieur (_setter_) pour le prix en cours.
 
     **Remarque :** observez que dans le constructeur de cette classe, aucune vérification concernant la cohérence des attributs de l'offre créée avec ceux du produit n'a été faite (ce n'est pas la responsabilité de l'objet `OffreEnchere`).
 
    **Remarque :** observez également que par défaut l'offre est désignée comme perdante à travers un booléen.
 
-1. Écrivez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est valide. Pensez à vérifier que les enchères ne sont pas clôturées.
+1. Implémentez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est valide. Pensez à vérifier que les enchères ne sont pas clôturées.
 
 1. Dans la classe `Produit`, vous devrez conserver les offres émises sur ce produit. Pour stocker ces offres, on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions.
    
@@ -79,9 +79,9 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
     **Pensez à écrire des tests unitaires (beaucoup de tests unitaires !) pour les différentes méthodes implémentées pour cette fonction...**
 
-1. Implémentez la méthode `setEstGagnante(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Pensez à mettre à jour le compte de l'enchérisseur perdant.
+1. Implémentez la méthode `setEtatGagnant(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Pensez à mettre à jour le compte de l'enchérisseur perdant.
    
-1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. Vous aurez à utiliser la méthode `setEstGagnante` de la classe `OffreEnchere`.
+1. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` afin qu'elle ajoute `o` à la liste d'offres d'enchères de la classe `Produit` en mettant à jour les différentes entités de votre application. Vous aurez à utiliser la méthode `setEtatGagnant(boolean etat)` de la classe `OffreEnchere`.
 
     **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
