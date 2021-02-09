@@ -4,7 +4,7 @@ public class Produit {
     private int numProduit;
     private String descriptionProduit;
     private double prixCourant;
-    private double pasEnchere;
+    private static double pasEnchere;
     private double coutParticipation;
 
     private boolean disponible;
@@ -15,23 +15,25 @@ public class Produit {
         this.coutParticipation = coutParticipation;
         this.numProduit = numProduit;
         disponible = false;
+
     }
 
     public int getNumProduit() {
         return numProduit;
     }
 
-    // question 2
-    public void setPasEnchere(double pas) {
+    // question 1
+    public static void setPasEnchere(double pas) {
         pasEnchere = pas;
     }
 
     public void demarrerEnchere() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        disponible = true;
+
     }
 
     public void arreterEnchere() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        disponible = false;
     }
 
     public void ajouterOffre(OffreEnchere o) {

@@ -16,12 +16,22 @@ public class Compte {
         this.solde = solde;
         mesEncheres = new ArrayList<>();
     }
+    public void crediter(double somme){
+        solde = solde + somme;
+    }
 
     public double getSolde() {
         return solde;
     }
 
+   public void  setPrix(double newPrix){
+
+    }
+
     public OffreEnchere creerOffre(Produit produit, double prix, double prixMax) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+
     }
+
+
 }
