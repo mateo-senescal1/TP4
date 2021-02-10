@@ -30,6 +30,10 @@ public class OffreEnchere {
         return prixMax;
     }
 
+    public void setPrixEnCours(double prixEnCours) {
+        this.prixEnCours = prixEnCours;
+    }
+
     public void setEtatGagnant(boolean etat) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }

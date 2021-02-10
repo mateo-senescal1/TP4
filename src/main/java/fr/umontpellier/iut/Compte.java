@@ -24,9 +24,7 @@ public class Compte {
         return solde;
     }
 
-   public void  setPrix(double newPrix){
 
-    }
 
     public OffreEnchere creerOffre(Produit produit, double prix, double prixMax) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");

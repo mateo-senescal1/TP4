@@ -1,4 +1,5 @@
 package fr.umontpellier.iut;
+import java.util.ArrayList;
 
 public class Produit {
     private int numProduit;
@@ -6,8 +7,8 @@ public class Produit {
     private double prixCourant;
     private static double pasEnchere;
     private double coutParticipation;
-
     private boolean disponible;
+    private static ArrayList<OffreEnchere> Offres;
 
     public Produit(int numProduit, String descriptionProduit, double prixCourant, double coutParticipation) {
         this.descriptionProduit = descriptionProduit;
@@ -15,6 +16,7 @@ public class Produit {
         this.coutParticipation = coutParticipation;
         this.numProduit = numProduit;
         disponible = false;
+        Offres = new ArrayList<>();
 
     }
 
@@ -54,6 +56,14 @@ public class Produit {
 
     // vérifie si l'offre est valide
     public boolean verifierOffre(OffreEnchere offre) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        if (disponible && prixCourant + pasEnchere <= offre.getPrixEnCours()){
+            return true;
+
+    }else{
+        return false;}
     }
+
+
+
+
 }
