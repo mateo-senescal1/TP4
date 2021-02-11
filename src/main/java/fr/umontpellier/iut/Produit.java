@@ -56,6 +56,10 @@ public class Produit {
 
     // vérifie si l'offre est valide
     public boolean verifierOffre(OffreEnchere offre) {
+
+        if (Offres.isEmpty()){
+            return disponible;
+        }
         if (disponible && prixCourant + pasEnchere <= offre.getPrixEnCours()){
             return true;
 

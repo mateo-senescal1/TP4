@@ -27,8 +27,15 @@ public class Compte {
 
 
     public OffreEnchere creerOffre(Produit produit, double prix, double prixMax) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
-
+        if (prix <= prixMax && solde>= prixMax ){
+            OffreEnchere retour = new OffreEnchere(prix,prixMax,produit,this);
+            if (produit.verifierOffre(retour)){
+                solde = solde - (prixMax + produit.getCoutParticipation());
+                mesEncheres.add(retour);
+                return retour;
+            }
+        }
+        return null;
     }
 
 
