@@ -35,7 +35,10 @@ public class OffreEnchere {
     }
 
     public void setEtatGagnant(boolean etat) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        this.etatGagnant = etat;
+        if (etat = false){
+            monCompte.crediter(prixMax);
+        }
     }
 
     @Override

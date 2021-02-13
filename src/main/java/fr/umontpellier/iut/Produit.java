@@ -39,7 +39,7 @@ public class Produit {
     }
 
     public void ajouterOffre(OffreEnchere o) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+         o = new OffreEnchere();
     }
 
     public double getCoutParticipation() {
