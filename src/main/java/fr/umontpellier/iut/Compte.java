@@ -20,11 +20,28 @@ public class Compte {
         solde = solde + somme;
     }
 
+    public String getPseudo() {
+        return pseudo;
+    }
+
     public double getSolde() {
         return solde;
     }
 
-
+    @Override
+    public String toString() {
+        ArrayList<OffreEnchere> encheresGagnantes = new ArrayList<>();
+        for (OffreEnchere mesEnchere : mesEncheres) {
+            if (mesEnchere.isEtatGagnant()) {
+                encheresGagnantes.add(mesEnchere);
+            }
+        }
+        return "Compte{" +
+                "pseudo='" + pseudo + '\'' +
+                ", solde=" + solde +
+                ", enchères gagnantes :"+ encheresGagnantes +
+                '}';
+    }
 
     public OffreEnchere creerOffre(Produit produit, double prix, double prixMax) {
         if (prix <= prixMax && solde>= prixMax ){
@@ -32,6 +49,7 @@ public class Compte {
             if (produit.verifierOffre(retour)){
                 solde = solde - (prixMax + produit.getCoutParticipation());
                 mesEncheres.add(retour);
+                produit.ajouterOffre(retour);
                 return retour;
             }
         }

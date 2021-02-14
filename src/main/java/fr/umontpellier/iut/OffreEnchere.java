@@ -22,6 +22,14 @@ public class OffreEnchere {
         this.monCompte = monCompte;
     }
 
+    public boolean isEtatGagnant() {
+        return etatGagnant;
+    }
+
+    public Compte getMonCompte() {
+        return monCompte;
+    }
+
     public double getPrixEnCours() {
         return prixEnCours;
     }

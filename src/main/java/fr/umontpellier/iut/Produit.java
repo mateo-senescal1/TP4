@@ -9,6 +9,7 @@ public class Produit {
     private double coutParticipation;
     private boolean disponible;
     private static ArrayList<OffreEnchere> Offres;
+    private OffreEnchere offreGagnante;
 
     public Produit(int numProduit, String descriptionProduit, double prixCourant, double coutParticipation) {
         this.descriptionProduit = descriptionProduit;
@@ -39,7 +40,12 @@ public class Produit {
     }
 
     public void ajouterOffre(OffreEnchere o) {
-         o = new OffreEnchere();
+         Offres.add(o);
+         o.setEtatGagnant(true);
+         if (offreGagnante != null){
+         offreGagnante.setEtatGagnant(false);}
+         offreGagnante = o;
+
     }
 
     public double getCoutParticipation() {
@@ -47,27 +53,44 @@ public class Produit {
     }
 
     public OffreEnchere getOffreGagnante() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        return offreGagnante;
     }
 
     public boolean estDisponible() {
         return disponible;
     }
 
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "numProduit=" + numProduit +
+                ", offreGagnante=" + offreGagnante +
+                '}';
+    }
+
     // vérifie si l'offre est valide
     public boolean verifierOffre(OffreEnchere offre) {
 
-        if (Offres.isEmpty()){
-            return disponible;
+        if((!disponible) | (offre.getPrixEnCours() < prixCourant + pasEnchere )){
+            return false;
         }
-        if (disponible && prixCourant + pasEnchere <= offre.getPrixEnCours()){
-            return true;
 
-    }else{
-        return false;}
+        if(offre.getPrixMax() < offre.getPrixMax()){
+            offre.setPrixEnCours(offre.getPrixMax());
+            prixCourant = offre.getPrixMax();
+            return false;
+        }
+        if (offre.getPrixEnCours() > offre.getPrixMax()){
+            prixCourant = offre.getPrixEnCours();
+            return true;
+        }
+        offre.setPrixEnCours(offre.getPrixMax());
+        prixCourant = offre.getPrixEnCours();
+        return true;
+    }
     }
 
 
 
 
-}
+
